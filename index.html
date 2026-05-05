@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ocean AI Assistant</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      min-height:100vh;
+      overflow:hidden;
+      background: linear-gradient(-45deg, #001f3f, #0077b6, #00b4d8, #90e0ef);
+      background-size: 400% 400%;
+      animation: oceanFlow 15s ease infinite;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:white;
+    }
+    @keyframes oceanFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .overlay {
+      position:absolute;
+      inset:0;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 70%);
+    }
+    .container {
+      position:relative;
+      z-index:2;
+      text-align:center;
+      padding:40px;
+      backdrop-filter: blur(15px);
+      background: rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.2);
+      border-radius:24px;
+      box-shadow:0 20px 50px rgba(0,0,0,0.35);
+      max-width:700px;
+    }
+    h1 {
+      font-size:3rem;
+      margin-bottom:15px;
+      text-shadow:0 0 20px rgba(255,255,255,0.4);
+    }
+    p {
+      font-size:1.2rem;
+      line-height:1.6;
+      opacity:0.95;
+    }
+    .bubble {
+      position:absolute;
+      bottom:-120px;
+      background:rgba(255,255,255,0.15);
+      border-radius:50%;
+      animation: rise 12s infinite ease-in;
+    }
+    @keyframes rise {
+      from { transform:translateY(0) scale(1); opacity:0.8; }
+      to { transform:translateY(-110vh) scale(1.8); opacity:0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <h1>🌊 Ocean Assistant</h1>
+    <p>Dive into a beautiful AI-powered ocean experience. Chat, explore, and interact with your Watson-powered assistant.</p>
+  </div>
+
+  <div class="bubble" style="left:10%; width:40px; height:40px; animation-duration:10s"></div>
+  <div class="bubble" style="left:30%; width:60px; height:60px; animation-duration:14s"></div>
+  <div class="bubble" style="left:55%; width:30px; height:30px; animation-duration:9s"></div>
+  <div class="bubble" style="left:75%; width:70px; height:70px; animation-duration:16s"></div>
+  <div class="bubble" style="left:90%; width:45px; height:45px; animation-duration:12s"></div>
+
+<script>
+window.watsonAssistantChatOptions = {
+ integrationID: "d1494679-4cd3-4ea0-bb19-01059fcbebd5",
+ region: "https://integrations.eu-de.assistant.watson.appdomain.cloud",
+ serviceInstanceID: "07759be1-4cde-4477-8582-0f1ddeaba834",
+ onLoad: async (instance) => { await instance.render(); }
+};
+setTimeout(function(){
+ const t=document.createElement('script');
+ t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+ document.head.appendChild(t);
+});
+</script>
+</body>
+</html>
